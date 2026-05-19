@@ -22,8 +22,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark")
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme") as Theme | null
-    if (stored) {
+    const stored = localStorage.getItem("farchodev_theme") as Theme | null
+    if (stored === "light" || stored === "dark") {
       setTheme(stored)
     }
   }, [])
@@ -35,7 +35,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } else {
       root.classList.remove("theme-day")
     }
-    localStorage.setItem("theme", theme)
+    localStorage.setItem("farchodev_theme", theme)
   }, [theme])
 
   const toggle = () => setTheme((t) => (t === "dark" ? "light" : "dark"))
